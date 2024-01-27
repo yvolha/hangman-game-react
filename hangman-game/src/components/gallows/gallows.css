@@ -1,7 +1,49 @@
 .gallows-wrapper {
     position: relative;
+    width: fit-content;
 }
 
 .gallows {
     height: 200px;
+}
+
+.head,
+.left-hand,
+.right-hand,
+.left-leg,
+.right-leg {
+    position: absolute;
+    height: 40px;
+}
+
+.head {
+    top: 40px;
+    left: 84px;
+}
+
+.body {
+    position: absolute;
+    top: 80px;
+    left: 102px;
+    height: 60px;
+}
+
+.left-hand {
+    top: 80px;
+    left: 70px;
+}
+
+.right-hand {
+    top: 80px;
+    left: 103px;
+}
+
+.left-leg {
+    top: 139px;
+    left: 70px;
+}
+
+.right-leg {
+    top: 139px;
+    left: 103px;
 }

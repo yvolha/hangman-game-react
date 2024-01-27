@@ -5,12 +5,12 @@ import { Gallows } from './components/gallows/gallows.component'
 function App() {
   const errorNumber = 5;
   return (
-    <div>
+    <>
       <Gallows />
       <div>
         <IncorrectGuessCounter incorrectGuessNumber={errorNumber} />
       </div>
-    </div>
+      </>
   )
 }
 
