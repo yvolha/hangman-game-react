@@ -2,15 +2,28 @@ import "./App.css";
 import { IncorrectGuessCounter } from "./components/incorrect-guess-counter/incorrect-guess-counter.component";
 import { Gallows } from "./components/gallows/gallows.component";
 import { QuestionAnswer } from "./components/question-answer/question-answer.component";
+import { useEffect, useState } from "react";
 
 function App() {
-  const errorNumber = 5;
+  const [incorrectGuessNumber, setIncorrectGuessNumber] = useState(0);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      console.log(event.key);
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
   return (
     <>
       <Gallows />
       <div>
         <QuestionAnswer />
-        <IncorrectGuessCounter incorrectGuessNumber={errorNumber} />
+        <IncorrectGuessCounter incorrectGuessNumber={incorrectGuessNumber} />
       </div>
     </>
   );
