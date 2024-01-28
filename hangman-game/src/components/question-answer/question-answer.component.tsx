@@ -1,9 +1,10 @@
 import "./question-answer.css";
 import { useState } from "react";
 import questions, { IQuestion } from "../../constants/questions";
+import { IQuestionAnswerProps } from "./question-answer.types";
 
 
-export const QuestionAnswer = () => {
+export const QuestionAnswer = ({correctlyGuessedLetter}: IQuestionAnswerProps) => {
   const [currentQuestionAnswerPair, setCurrentQuestionAnswerPair] = useState(getRandomQuestionAnswerPair());
   const [currentQuestionView, setCurrentQuestionView] = useState(currentQuestionAnswerPair.answer.replace(/./g, "_ "));
 

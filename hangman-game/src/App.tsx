@@ -7,6 +7,7 @@ import { Keyboard } from "./components/keyboard/keyboard.component";
 
 function App() {
   const [incorrectGuessNumber, setIncorrectGuessNumber] = useState(0);
+  const [correctlyGuessedLetter, setCorrectlyGuessedLetter] = useState('');
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -21,9 +22,9 @@ function App() {
   }, []);
   return (
     <>
-      <Gallows />
+      <Gallows incorrectGuessNumber={incorrectGuessNumber}/>
       <div>
-        <QuestionAnswer />
+        <QuestionAnswer correctlyGuessedLetter={correctlyGuessedLetter}/>
         <IncorrectGuessCounter incorrectGuessNumber={incorrectGuessNumber} />
         <Keyboard />
       </div>
