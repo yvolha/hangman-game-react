@@ -3,6 +3,7 @@ import { IncorrectGuessCounter } from "./components/incorrect-guess-counter/inco
 import { Gallows } from "./components/gallows/gallows.component";
 import { QuestionAnswer } from "./components/question-answer/question-answer.component";
 import { useEffect, useState } from "react";
+import { Keyboard } from "./components/keyboard/keyboard.component";
 
 function App() {
   const [incorrectGuessNumber, setIncorrectGuessNumber] = useState(0);
@@ -24,6 +25,7 @@ function App() {
       <div>
         <QuestionAnswer />
         <IncorrectGuessCounter incorrectGuessNumber={incorrectGuessNumber} />
+        <Keyboard />
       </div>
     </>
   );

@@ -4,6 +4,6 @@ import { IIncorrectGuessCounterProps } from "./incorrect-guess-counter.types";
 
 export const IncorrectGuessCounter = ({incorrectGuessNumber}: IIncorrectGuessCounterProps) => {
   return (
-    <div>Times guessed wrong: {incorrectGuessNumber} / {incorrectGuessNumberAllowed}</div>
+    <div>Times letter guessed wrong: {incorrectGuessNumber} / {incorrectGuessNumberAllowed}</div>
   );
 };
