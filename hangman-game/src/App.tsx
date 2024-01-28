@@ -8,12 +8,12 @@ import questions, { IQuestion } from "./constants/questions";
 
 function App() {
   const [incorrectGuessNumber, setIncorrectGuessNumber] = useState(0);
-  const [correctlyGuessedLetter, setCorrectlyGuessedLetter] = useState('');
+  const [correctlyGuessedLetter, setCorrectlyGuessedLetter] = useState("");
   const [currentQuestionAnswerPair, setCurrentQuestionAnswerPair] = useState(getRandomQuestionAnswerPair());
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      console.log(event.key);
+      handleChosenLetter(event.key);
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -23,6 +23,10 @@ function App() {
     };
   }, []);
 
+  function handleChosenLetter(letter: string) {
+    console.log(letter);
+  }
+ 
   function getRandomQuestionAnswerPair (): IQuestion {
     const questionAnswerPairNumber = questions.length;
     const questionAnswerPairIndex = Math.floor(Math.random() * questionAnswerPairNumber);
@@ -39,7 +43,7 @@ function App() {
           correctlyGuessedLetter={correctlyGuessedLetter}
         />
         <IncorrectGuessCounter incorrectGuessNumber={incorrectGuessNumber} />
-        <Keyboard />
+        <Keyboard handleKeyClick={handleChosenLetter} />
       </div>
     </>
   );

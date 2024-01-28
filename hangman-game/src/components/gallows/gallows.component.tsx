@@ -5,7 +5,7 @@ export const Gallows = ({incorrectGuessNumber}: IGallowsProps) => {
 
   const getIsBodyPartShown = (bodyPartIndex: number) => {
     return incorrectGuessNumber >= bodyPartIndex + 1;
-  }
+  };
 
   return (
     <div className="gallows-wrapper">
