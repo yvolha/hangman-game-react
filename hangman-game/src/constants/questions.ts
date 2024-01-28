@@ -1,4 +1,4 @@
-interface IQuestion {
+export interface IQuestion {
     question: string;
     answer: string;
 }
@@ -57,12 +57,12 @@ const questions: IQuestion[] = [
     answer: "Venus",
   },
   {
-    question: "140. Who is known as the Father of the Nation in India? Please indicate the last name.",
-    answer: "Mahatma Gandhi",
+    question: "Who is known as the Father of the Nation in India? Please indicate the last name.",
+    answer: "Gandhi",
   },
   {
     question: "Who was the famous scientist known for his theory of relativity? Please indicate the last name.",
-    answer: "Albert Einstein",
+    answer: "Einstein",
   },
   {
     question: "Who is known as the Father of Medicine?",
