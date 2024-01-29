@@ -7,7 +7,7 @@ import { Keyboard } from "./components/keyboard/keyboard.component";
 import questions, { IQuestion } from "./constants/questions";
 
 function App() {
-  const [currentLetter, setCurrentLetter] = useState('');
+  const [currentLetter, setCurrentLetter] = useState("");
   const [incorrectGuessNumber, setIncorrectGuessNumber] = useState(0);
   const [correctlyGuessedLetter, setCorrectlyGuessedLetter] = useState("");
   const [currentQuestionAnswerPair, setCurrentQuestionAnswerPair] = useState(getRandomQuestionAnswerPair());
@@ -34,8 +34,12 @@ function App() {
     
     const isLetterCorrect = getIsLetterCorrect(currentLetter);
     console.log(currentLetter);
-    isLetterCorrect ? setCorrectlyGuessedLetter(currentLetter) : setIncorrectGuessNumber(incorrectGuessNumber + 1);
-  }, [currentLetter])
+    if (isLetterCorrect) {
+      setCorrectlyGuessedLetter(currentLetter)
+    } else {
+      setIncorrectGuessNumber(incorrectGuessNumber + 1);
+    } 
+  }, [currentLetter]);
  
   function getRandomQuestionAnswerPair (): IQuestion {
     const questionAnswerPairNumber = questions.length;
