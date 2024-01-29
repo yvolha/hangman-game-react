@@ -5,6 +5,7 @@ import { QuestionAnswer } from "./components/question-answer/question-answer.com
 import { useEffect, useRef, useState } from "react";
 import { Keyboard } from "./components/keyboard/keyboard.component";
 import questions, { IQuestion } from "./constants/questions";
+import incorrectGuessNumberAllowed from "./constants/incorrect-guess-number-allowed";
 
 function App() {
   const [currentLetter, setCurrentLetter] = useState("");
@@ -40,6 +41,12 @@ function App() {
       setIncorrectGuessNumber(incorrectGuessNumber + 1);
     } 
   }, [currentLetter]);
+
+  useEffect(() => {
+    if (incorrectGuessNumber >= incorrectGuessNumberAllowed){
+      alert('you lost');
+    }
+  }, [incorrectGuessNumber])
  
   function getRandomQuestionAnswerPair (): IQuestion {
     const questionAnswerPairNumber = questions.length;
