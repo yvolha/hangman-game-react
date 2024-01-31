@@ -15,6 +15,10 @@ export const QuestionAnswer = ({currentQuestionAnswerPair, correctlyGuessedLette
     setCurrentQuestionView(currentQuestionAnswerPair.answer.replace(new RegExp(`[^${guessedLetters}]`, "gi"), "_ "))
   }, [guessedLetters])
 
+  useEffect(() => {
+    console.log(currentQuestionView.toUpperCase() === currentQuestionAnswerPair.answer.toUpperCase())
+  }, [currentQuestionView])
+
   return(
     <div>
       <div className="answer">{currentQuestionView}</div>
