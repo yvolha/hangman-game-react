@@ -7,11 +7,13 @@ export const QuestionAnswer = ({currentQuestionAnswerPair, correctlyGuessedLette
   const [currentQuestionView, setCurrentQuestionView] = useState(currentQuestionAnswerPair.answer.replace(/./gi, "_ "));
   const [guessedLetters, setGuessedLetters] = useState('');
 
-  useLayoutEffect(() => {
-    setGuessedLetters(guessedLetters => guessedLetters + correctlyGuessedLetter);
-    
-    setCurrentQuestionView(currentQuestionAnswerPair.answer.replace(new RegExp("[^" + guessedLetters + "]", "gi"), "_ "))
+  useEffect(() => {
+    setGuessedLetters(guessedLetters + correctlyGuessedLetter);
   }, [correctlyGuessedLetter])
+
+  useEffect(() => {
+    setCurrentQuestionView(currentQuestionAnswerPair.answer.replace(new RegExp(`[^${guessedLetters}]`, "gi"), "_ "))
+  }, [guessedLetters])
 
   return(
     <div>
