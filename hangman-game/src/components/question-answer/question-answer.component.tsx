@@ -1,11 +1,12 @@
 import "./question-answer.css";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { IQuestionAnswerProps } from "./question-answer.types";
 
 
 export const QuestionAnswer = ({currentQuestionAnswerPair, correctlyGuessedLetter}: IQuestionAnswerProps) => {
-  const [currentQuestionView, setCurrentQuestionView] = useState(currentQuestionAnswerPair.answer.replace(/./gi, "_ "));
-  const [guessedLetters, setGuessedLetters] = useState('');
+  const [currentQuestionView, setCurrentQuestionView] = useState<string>(currentQuestionAnswerPair.answer.replace(/./gi, "_ "));
+  const [guessedLetters, setGuessedLetters] = useState<string>('');
+  const [isPopupShown, setIsPopupShown] = useState<boolean>(false);
 
   useEffect(() => {
     setGuessedLetters(guessedLetters + correctlyGuessedLetter);
@@ -16,7 +17,9 @@ export const QuestionAnswer = ({currentQuestionAnswerPair, correctlyGuessedLette
   }, [guessedLetters])
 
   useEffect(() => {
-    console.log(currentQuestionView.toUpperCase() === currentQuestionAnswerPair.answer.toUpperCase())
+    if (currentQuestionView.toUpperCase() === currentQuestionAnswerPair.answer.toUpperCase()) {
+
+    }
   }, [currentQuestionView])
 
   return(

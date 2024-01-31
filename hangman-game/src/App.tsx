@@ -58,6 +58,10 @@ function App() {
     return currentQuestionAnswerPair.answer.toLowerCase().includes(letter.toLowerCase()) ? true : false;
   }
 
+  function updateCurrentQuestionAnswerPair() {
+    setCurrentQuestionAnswerPair(getRandomQuestionAnswerPair());
+  }
+
   return (
     <>
       <Gallows incorrectGuessNumber={incorrectGuessNumber}/>
