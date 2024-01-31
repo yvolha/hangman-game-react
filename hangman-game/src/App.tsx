@@ -36,7 +36,7 @@ function App() {
     const isLetterCorrect = getIsLetterCorrect(currentLetter);
     console.log(currentLetter);
     if (isLetterCorrect) {
-      setCorrectlyGuessedLetter(currentLetter)
+      setCorrectlyGuessedLetter(currentLetter);
     } else {
       setIncorrectGuessNumber(incorrectGuessNumber + 1);
     } 
@@ -44,9 +44,9 @@ function App() {
 
   useEffect(() => {
     if (incorrectGuessNumber >= incorrectGuessNumberAllowed){
-      alert('you lost');
+      alert("you lost");
     }
-  }, [incorrectGuessNumber])
+  }, [incorrectGuessNumber]);
  
   function getRandomQuestionAnswerPair (): IQuestion {
     const questionAnswerPairNumber = questions.length;

@@ -1,23 +1,26 @@
-import './popup.css';
-import { IPopupProps } from './popup.types';
+import "./popup.css";
+import { IPopupProps } from "./popup.types";
 
 export const Popup = ({hasWon, answer, restartGame }: IPopupProps) => {
-    return (
-    <div className='popup-container'>
+  return (
+    <div className="popup-container">
       <div className="popup-wrapper">
         <div className="popup-cross">X</div>
         <div className="popup">
           <div className="popup__result">
-            {hasWon ? 'You have won!' : 'You have lost...'}
+            {hasWon ? "You have won!" : "You have lost..."}
           </div>
-          <div className="popup__answer">
-            The answe is <br /> "{answer}".
+          <div className="popup__words">
+            The answer is:
+            <div className="popup__answer">
+              {answer}
+            </div>
           </div>
           <div onClick={restartGame} className="popup__restart">
-            Play again!
+            Play again?
           </div>
         </div>
       </div>
     </div>
-    ) 
-}
+  ); 
+};
