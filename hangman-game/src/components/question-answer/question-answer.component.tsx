@@ -1,9 +1,10 @@
 import "./question-answer.css";
 import { useEffect, useState } from "react";
 import { IQuestionAnswerProps } from "./question-answer.types";
+import { Popup } from "../popup/popup.component";
 
 
-export const QuestionAnswer = ({currentQuestionAnswerPair, correctlyGuessedLetter}: IQuestionAnswerProps) => {
+export const QuestionAnswer = ({currentQuestionAnswerPair, correctlyGuessedLetter, func}: IQuestionAnswerProps) => {
   const [currentQuestionView, setCurrentQuestionView] = useState<string>(currentQuestionAnswerPair.answer.replace(/./gi, "_ "));
   const [guessedLetters, setGuessedLetters] = useState<string>('');
   const [isPopupShown, setIsPopupShown] = useState<boolean>(false);
@@ -18,14 +19,21 @@ export const QuestionAnswer = ({currentQuestionAnswerPair, correctlyGuessedLette
 
   useEffect(() => {
     if (currentQuestionView.toUpperCase() === currentQuestionAnswerPair.answer.toUpperCase()) {
-
+      setIsPopupShown(true);
     }
   }, [currentQuestionView])
 
   return(
+    <>
+    {isPopupShown && <Popup 
+      hasWon={true} 
+      answer={currentQuestionAnswerPair.answer}
+      restartGame={func}
+      />}
     <div>
       <div className="answer">{currentQuestionView}</div>
       <div className="question">{currentQuestionAnswerPair.question}</div>
     </div>
+    </>
   );
 };
