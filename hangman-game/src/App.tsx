@@ -62,6 +62,10 @@ function App() {
     setCurrentQuestionAnswerPair(getRandomQuestionAnswerPair());
   }
 
+  function restartGame(){
+    console.log('restarting')
+  }
+
   return (
     <>
       <Gallows incorrectGuessNumber={incorrectGuessNumber}/>
@@ -69,6 +73,7 @@ function App() {
         <QuestionAnswer 
           currentQuestionAnswerPair={currentQuestionAnswerPair}
           correctlyGuessedLetter={correctlyGuessedLetter}
+          func={restartGame}
         />
         <IncorrectGuessCounter incorrectGuessNumber={incorrectGuessNumber} />
         <Keyboard handleKeyClick={setCurrentLetter} />

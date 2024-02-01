@@ -1,5 +1,5 @@
 import "./question-answer.css";
-import { useEffect, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import { IQuestionAnswerProps } from "./question-answer.types";
 import { Popup } from "../popup/popup.component";
 
@@ -23,11 +23,18 @@ export const QuestionAnswer = ({currentQuestionAnswerPair, correctlyGuessedLette
     }
   }, [currentQuestionView]);
 
+  function closePopup(e: MouseEvent){
+    if (e.target === e.currentTarget) {
+      setIsPopupShown(false);
+    }
+  }
+
   return(
     <>
       {isPopupShown && <Popup 
         hasWon={true} 
         answer={currentQuestionAnswerPair.answer}
+        closePupup={closePopup}
         restartGame={func}
       />}
       <div>
