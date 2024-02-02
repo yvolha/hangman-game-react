@@ -34,7 +34,7 @@ export const QuestionAnswer = ({currentQuestionAnswerPair, correctlyGuessedLette
       {isPopupShown && <Popup 
         hasWon={true} 
         answer={currentQuestionAnswerPair.answer}
-        closePupup={closePopup}
+        closePopup={closePopup}
         restartGame={func}
       />}
       <div>

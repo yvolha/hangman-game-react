@@ -1,17 +1,20 @@
 import "./App.css";
+import { useEffect, useRef, useState } from "react";
+import { MouseEvent } from "react";
 import { IncorrectGuessCounter } from "./components/incorrect-guess-counter/incorrect-guess-counter.component";
 import { Gallows } from "./components/gallows/gallows.component";
 import { QuestionAnswer } from "./components/question-answer/question-answer.component";
-import { useEffect, useRef, useState } from "react";
 import { Keyboard } from "./components/keyboard/keyboard.component";
 import questions, { IQuestion } from "./constants/questions";
 import incorrectGuessNumberAllowed from "./constants/incorrect-guess-number-allowed";
+import { Popup } from "./components/popup/popup.component";
 
 function App() {
   const [currentLetter, setCurrentLetter] = useState("");
   const [incorrectGuessNumber, setIncorrectGuessNumber] = useState(0);
   const [correctlyGuessedLetter, setCorrectlyGuessedLetter] = useState("");
   const [currentQuestionAnswerPair, setCurrentQuestionAnswerPair] = useState(getRandomQuestionAnswerPair());
+  const [isPopupShown, setIsPopupShown] = useState<boolean>(false);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -34,7 +37,6 @@ function App() {
     }
     
     const isLetterCorrect = getIsLetterCorrect(currentLetter);
-    console.log(currentLetter);
     if (isLetterCorrect) {
       setCorrectlyGuessedLetter(currentLetter);
     } else {
@@ -44,7 +46,7 @@ function App() {
 
   useEffect(() => {
     if (incorrectGuessNumber >= incorrectGuessNumberAllowed){
-      alert("you lost");
+      setIsPopupShown(true);
     }
   }, [incorrectGuessNumber]);
  
@@ -62,12 +64,23 @@ function App() {
     setCurrentQuestionAnswerPair(getRandomQuestionAnswerPair());
   }
 
+  function closePopup(e: MouseEvent){
+    if (e.target === e.currentTarget) {
+      setIsPopupShown(false);
+    }
+  }
+
   function restartGame(){
-    console.log('restarting')
+    console.log("restarting");
   }
 
   return (
     <>
+      {isPopupShown && <Popup 
+        hasWon={false} 
+        answer={currentQuestionAnswerPair.answer} 
+        closePopup={closePopup} 
+        restartGame={restartGame}/>}
       <Gallows incorrectGuessNumber={incorrectGuessNumber}/>
       <div>
         <QuestionAnswer 
