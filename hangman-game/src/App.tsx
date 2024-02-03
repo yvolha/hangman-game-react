@@ -15,6 +15,7 @@ function App() {
   const [correctlyGuessedLetter, setCorrectlyGuessedLetter] = useState("");
   const [currentQuestionAnswerPair, setCurrentQuestionAnswerPair] = useState(getRandomQuestionAnswerPair());
   const [isPopupShown, setIsPopupShown] = useState<boolean>(false);
+  const [isNewGame, setIsNewGame] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -64,6 +65,10 @@ function App() {
     setCurrentQuestionAnswerPair(getRandomQuestionAnswerPair());
   }
 
+  function updateIsNewGame() {
+    setIsNewGame(true);
+  }
+
   function closePopup(e: MouseEvent){
     if (e.target === e.currentTarget) {
       setIsPopupShown(false);
@@ -93,7 +98,7 @@ function App() {
           func={restartGame}
         />
         <IncorrectGuessCounter incorrectGuessNumber={incorrectGuessNumber} />
-        <Keyboard handleKeyClick={setCurrentLetter} />
+        <Keyboard handleKeyClick={setCurrentLetter} isNewGameProp={isNewGame} updateIsNewGame={updateIsNewGame} />
       </div>
     </>
   );
