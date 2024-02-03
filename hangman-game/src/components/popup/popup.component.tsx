@@ -1,11 +1,11 @@
 import "./popup.css";
 import { IPopupProps } from "./popup.types";
 
-export const Popup = ({hasWon, answer, closePopup, restartGame }: IPopupProps) => {
+export const Popup = ({hasWon, answer, restartGame }: IPopupProps) => {
   return (
-    <div onClick={closePopup} className="popup-container">
+    <div onClick={restartGame} className="popup-container">
       <div className="popup-wrapper">
-        <div  onClick={closePopup} className="popup-cross">x</div>
+        <div onClick={restartGame} className="popup-cross">x</div>
         <div className="popup">
           <div className="popup__result">
             {hasWon ? "You have won!" : "You have lost..."}
