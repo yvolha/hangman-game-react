@@ -72,6 +72,10 @@ function App() {
 
   function restartGame(){
     console.log("restarting");
+    setIncorrectGuessNumber(0);
+    setCorrectlyGuessedLetter('');
+    setIsPopupShown(false);
+    updateCurrentQuestionAnswerPair();
   }
 
   return (

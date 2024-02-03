@@ -9,6 +9,8 @@ export const QuestionAnswer = ({currentQuestionAnswerPair, correctlyGuessedLette
   const [guessedLetters, setGuessedLetters] = useState<string>("");
   const [isPopupShown, setIsPopupShown] = useState<boolean>(false);
 
+
+
   useEffect(() => {
     setGuessedLetters(guessedLetters + correctlyGuessedLetter);
   }, [correctlyGuessedLetter]);
@@ -16,6 +18,11 @@ export const QuestionAnswer = ({currentQuestionAnswerPair, correctlyGuessedLette
   useEffect(() => {
     setCurrentQuestionView(currentQuestionAnswerPair.answer.replace(new RegExp(`[^${guessedLetters}]`, "gi"), "_ "));
   }, [guessedLetters]);
+
+  useEffect(() => {
+    setIsPopupShown(false);
+    setGuessedLetters('');
+  }, [currentQuestionAnswerPair]);
 
   useEffect(() => {
     if (currentQuestionView.toUpperCase() === currentQuestionAnswerPair.answer.toUpperCase()) {
